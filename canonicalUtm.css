@@ -1,0 +1,187 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	--theme: #075c86;
+	--theme-dim: #043c58;
+	--gray: #bbb;
+	/* Secondary color (Delimiter) */
+	--gray-dim: #666;
+	/* Primary color dimmed */
+}
+
+body {
+	font-family: 'Segoe UI', sans-serif;
+	overflow-x: hidden;
+}
+
+#header {
+	background-color: var(--theme);
+}
+
+#header h1 {
+	color: white;
+}
+
+a,
+a:link,
+a:visited {
+	color: var(--theme);
+}
+a:hover {
+	background: none;
+}
+
+
+input,
+button,
+select {
+	border: 1px solid var(--gray) !important;
+	padding: 3px;
+	margin: 3px 0;
+	padding-left: .5em;
+	line-height: 1.5em;
+}
+
+input:focus,
+select:focus {
+	transition: all .4s;
+}
+
+input.defaultButton,
+input.button:hover {
+	background-color: var(--theme);
+	color: #FBFBF3;
+}
+
+button,
+input.button {
+	cursor: pointer;
+}
+
+.block {
+	background-color: white;
+	box-shadow: 0 0 2px var(--theme);
+	padding: 0.4em;
+	margin: 0.5em 0;
+}
+
+#content {
+	border-top: none;
+}
+
+#main {
+	width: calc(100% - 2em);
+	padding: 1em 0em;
+	margin: 1em;
+	font-size: 1em;
+	float: none;
+	display: block;
+}
+
+#rightSidebar {
+	position: absolute;
+	right: -25%;
+	float: none;
+	width: calc(25% - 2em);
+	padding: 1em 0em 1em 0em;
+	font-size: 0.9em;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+#navbar {
+	text-align: center;
+	border-bottom: none;
+	padding: 1em 0;
+}
+#navbar a {
+	font-size: 0.8em;
+}
+a.action,
+a.file {
+	font-size: 1em;
+}
+
+.journals {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.journal-content h3 {
+	margin-bottom: 0.8em !important;
+}
+
+.journal-item {
+	display: flex;
+	background-color: white;
+	box-shadow: 0 0 3px var(--gray);
+	margin: 0.5em;
+	flex: 1;
+	transition: all 0.3s ease-in-out;
+}
+.journal-item:hover {
+	box-shadow: 0 0 4px var(--theme);
+}
+
+.journal-thumb {
+	width: 120px;
+}
+
+.journal-content {
+	margin-left: 1em;
+	flex-grow: 1;
+}
+
+.journal-item .action {
+	padding: 0.4em;
+	margin: 0.4em 0;
+	background-color: var(--theme);
+	color: white;
+	text-decoration: none;
+	display: block;
+}
+
+.journal-item .action:hover {
+	background-color: var(--theme-dim);
+
+}
+
+.homepageImage img {
+	margin: 0 auto;
+	border: 0;
+	float: none;
+	display: block;
+	width: 100%;
+	margin: 0;
+	text-align: center;
+}
+
+.footer  {
+	background-color: var(--theme);
+	margin-top: 1em;
+}
+.footer, .footer a {
+	color: white;
+}
+
+.footer-content {
+	display: flex;
+}
+.footer-copyright {
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: black;
+}
+.footer-inner {
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.footer-inner * {
+	margin: 0.5em 0;
+}
