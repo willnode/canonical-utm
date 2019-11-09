@@ -105,12 +105,18 @@ input.button {
 
 #main {
 	width: calc(100% - 2em);
-	padding: 1em 0em;
-	margin: 1em;
+	padding: 1em;
 	font-size: 1em;
 	float: none;
+	max-width: 800px;
+	margin: 1em auto;
 	display: block;
 }
+
+#pkp-common-openJournalSystems #main {
+	max-width: initial;
+}
+
 
 #rightSidebar {
 	position: absolute;
@@ -205,9 +211,10 @@ a.file {
 	text-align: center;
 }
 
-.homepageImage, .homepageImage a {
-    height: 100%;
-    display: block;
+.homepageImage,
+.homepageImage a {
+	height: 100%;
+	display: block;
 }
 
 .footer {
@@ -285,17 +292,22 @@ a.file {
 		margin-right: 0;
 		margin-bottom: 0.8em;
 	}
+
 	.footer-map {
 		width: 100%;
 	}
-	#header::before, .footer-inner::before {
+
+	#header::before,
+	.footer-inner::before {
 		background-size: cover;
 		background-attachment: scroll;
 		background-position: center;
 	}
+
 	#header {
 		background: linear-gradient(180deg, #0589 0%, var(--theme) 90%);
 	}
+
 	.footer {
 		background: linear-gradient(0deg, #058a 0%, var(--theme-dim) 50%);
 	}
@@ -303,56 +315,67 @@ a.file {
 
 
 .modalDialog {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    opacity:0;
-    transition: opacity 0.3s ease-in;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+	opacity: 0;
+	transition: opacity 0.3s ease-in;
 	pointer-events: none;
 	display: flex;
 }
+
 .modalDialog:target {
-    opacity:1;
-    pointer-events: auto;
+	opacity: 1;
+	pointer-events: auto;
 }
-.modalDialog > div {
+
+.modalDialog>div {
 	width: 80%;
-    max-height: 60%;
-    position: relative;
-    margin: 0 auto;
-    padding: 1em;
+	max-height: 60%;
+	position: relative;
+	margin: 0 auto;
+	padding: 1em;
 	background: white;
 	display: flex;
 	align-self: center;
+	max-width: 960px;
 }
+
 .close {
-    background: var(--gray);
-    color: #FFFFFF;
-    line-height: 25px;
-    position: absolute;
-    right: -12px;
-    text-align: center;
-    top: -10px;
-    width: 24px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 12px;
-    box-shadow: 1px 1px 3px #000;
+	background: var(--gray);
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 12px;
+	box-shadow: 1px 1px 3px #000;
 }
+
 .close:hover {
-    background: var(--theme);
+	background: var(--theme);
 }
+
 .modalThumb {
-    align-self: center;
-    margin: 1em;
+	align-self: center;
+	margin: 1em;
 }
+
 .modalContent {
 	padding: 1em;
 	overflow-y: auto;
 	flex-grow: 1;
 }
 
+
+#pkp-common-openJournalSystems #main>h2 {
+	display: none;
+}

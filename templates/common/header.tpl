@@ -150,4 +150,3 @@
 {/if}
 
 <div id="content">
-
