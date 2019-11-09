@@ -24,6 +24,8 @@
 	<meta name="description" content="{$metaSearchDescription|escape}" />
 	<meta name="keywords" content="{$metaSearchKeywords|escape}" />
 	<meta name="generator" content="{$applicationName} {$currentVersionString|escape}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#075c86" />
 	{$metaCustomHeaders}
 	{if $displayFavicon}<link rel="icon" href="{$faviconDir}/{$displayFavicon.uploadName|escape:"url"}" type="{$displayFavicon.mimeType|escape}" />{/if}
 	<link rel="stylesheet" href="{$baseUrl}/lib/pkp/styles/pkp.css" type="text/css" />
@@ -108,9 +110,10 @@
 <body id="pkp-{$pageTitle|replace:'.':'-'}">
 <div id="container">
 
-<div id="header">
+<div id="header" style="--bg: url({$baseUrl}/plugins/themes/canonicalUtm/assets/header.jpg)">
 <div id="headerTitle">
 <h1>
+<img class="headerLogo" src="{$baseUrl}/plugins/themes/canonicalUtm/assets/logo.png">
 {if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
 	<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogoAltText != ''}alt="{$displayPageHeaderLogoAltText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
 {/if}
@@ -127,27 +130,15 @@
 {/if}
 </h1>
 </div>
+
+{include file="common/navbar.tpl"}
+
 </div>
 
 <div id="body">
 
-{if $leftSidebarCode || $rightSidebarCode}
-	<div id="sidebar">
-		{if $leftSidebarCode}
-			<div id="leftSidebar">
-				{$leftSidebarCode}
-			</div>
-		{/if}
-		{if $rightSidebarCode}
-			<div id="rightSidebar">
-				{$rightSidebarCode}
-			</div>
-		{/if}
-	</div>
-{/if}
 
 <div id="main">
-{include file="common/navbar.tpl"}
 
 {include file="common/breadcrumbs.tpl"}
 
