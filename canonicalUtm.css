@@ -96,6 +96,7 @@ input.button {
 
 #content {
 	border-top: none;
+	font-size: 0.8em;
 }
 
 #body {
@@ -181,7 +182,7 @@ a.file {
 	flex-grow: 1;
 }
 
-.journal-item .action {
+.journals .action {
 	padding: 0.4em;
 	margin: 0.4em 0;
 	background-color: var(--theme);
@@ -190,9 +191,8 @@ a.file {
 	display: block;
 }
 
-.journal-item .action:hover {
+.journals .action:hover {
 	background-color: var(--theme-dim);
-
 }
 
 .homepageImage img {
@@ -203,6 +203,11 @@ a.file {
 	width: 100%;
 	margin: 0;
 	text-align: center;
+}
+
+.homepageImage, .homepageImage a {
+    height: 100%;
+    display: block;
 }
 
 .footer {
@@ -295,3 +300,59 @@ a.file {
 		background: linear-gradient(0deg, #058a 0%, var(--theme-dim) 50%);
 	}
 }
+
+
+.modalDialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    transition: opacity 0.3s ease-in;
+	pointer-events: none;
+	display: flex;
+}
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog > div {
+	width: 80%;
+    max-height: 60%;
+    position: relative;
+    margin: 0 auto;
+    padding: 1em;
+	background: white;
+	display: flex;
+	align-self: center;
+}
+.close {
+    background: var(--gray);
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: var(--theme);
+}
+.modalThumb {
+    align-self: center;
+    margin: 1em;
+}
+.modalContent {
+	padding: 1em;
+	overflow-y: auto;
+	flex-grow: 1;
+}
+

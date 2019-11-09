@@ -24,18 +24,17 @@
 {if $useAlphalist}
 	<p>{foreach from=$alphaList item=letter}<a href="{url searchInitial=$letter sort="title"}">{if $letter == $searchInitial}<strong>{$letter|escape}</strong>{else}{$letter|escape}{/if}</a> {/foreach}<a href="{url}">{if $searchInitial==''}<strong>{translate key="common.all"}</strong>{else}{translate key="common.all"}{/if}</a></p>
 {/if}
-
 <div class="journals">
 {iterate from=journals item=journal}
 	<div class="journal-item">
 		<div class="journal-thumb">
-			{if $site->getSetting('showThumbnail')}
+			<div class="homepageImage"><a href="#{$journal->getId()}">
 			{assign var="displayJournalThumbnail" value=$journal->getLocalizedSetting('journalThumbnail')}
 			{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
 				{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
-				<div class="homepageImage"><a href="{url journal=$journal->getPath()}"><img src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} /></a></div>
+				<img src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
 			{/if}
-		{/if}
+		</a></div>
 		</div>
 		<div class="journal-content">
 			{if $site->getSetting('showTitle')}
@@ -44,6 +43,30 @@
 			<a href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a>
 				<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a>
 				<a href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a>
+			</div>
+		</div>
+
+
+		<div id="{$journal->getId()}" class="modalDialog">
+			<div>
+				<a href="#close" title="Close" class="close">&times;</a>
+				<div class="modalThumb">
+					{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
+					{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
+						<img src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
+					{/if}
+				</div>
+				<div class="modalContent">
+					<h3>{$journal->getLocalizedTitle()|escape}</h3>
+
+					{if $journal->getLocalizedDescription()}
+						<p>{$journal->getLocalizedDescription()|nl2br}</p>
+					{/if}
+
+					<a href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a>
+					<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a>
+					<a href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a>
+				</div>
 			</div>
 		</div>
 {/iterate}
