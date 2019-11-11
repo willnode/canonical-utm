@@ -105,12 +105,12 @@ input.button {
 
 #main {
 	width: calc(100% - 2em);
-	padding: 1em;
 	font-size: 1em;
 	float: none;
 	max-width: 800px;
 	margin: 1em auto;
 	display: block;
+	overflow: visible;
 }
 
 #pkp-common-openJournalSystems #main {
@@ -161,17 +161,35 @@ a.file {
 	flex-wrap: wrap;
 }
 
+.journal-content a {
+    text-decoration: none;
+    color: black;
+}
+
 .journal-content h3 {
 	margin-bottom: 0.8em !important;
+	font-size: 1.5em !important;
+}
+
+.journal-content {
+	margin-left: 1em;
+	flex-grow: 1;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.journal-action {
+	margin-top: auto;
 }
 
 .journal-item {
 	display: flex;
-	background-color: white;
-	box-shadow: 0 0 3px var(--gray);
-	margin: 0.5em;
-	flex: 1;
+    background-color: white;
+    box-shadow: 0 0 3px var(--gray);
+    margin: 0.5em;
 	transition: all 0.3s ease-in-out;
+	width: calc(33.33% - 1em);
 }
 
 .journal-item:hover {
@@ -179,14 +197,11 @@ a.file {
 }
 
 .journal-thumb {
-	width: 120px;
+	width: 150px;
 	background-color: var(--theme);
+	flex-shrink: 0;
 }
 
-.journal-content {
-	margin-left: 1em;
-	flex-grow: 1;
-}
 
 .journals .action {
 	padding: 0.4em;
@@ -209,6 +224,8 @@ a.file {
 	width: 100%;
 	margin: 0;
 	text-align: center;
+	height: 100%;
+	object-fit: cover;
 }
 
 .homepageImage,
@@ -253,7 +270,7 @@ a.file {
 }
 
 .footer-inner {
-	padding: 1em;
+	padding: 3em 1em;
 	position: relative;
 	flex-grow: 1;
 	display: flex;
@@ -264,7 +281,7 @@ a.file {
 .footer-map {
 	border: 0;
 	width: 400px;
-	height: 300px;
+	min-height: 300px;
 }
 
 .footer-inner * {
@@ -272,6 +289,102 @@ a.file {
 }
 
 
+.modalDialog {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 99999;
+	opacity: 0;
+	transition: opacity 0.3s ease-in;
+	pointer-events: none;
+	display: flex;
+}
+
+.modalDialog:target {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modalBox {
+	width: 80%;
+	height: 80%;
+	position: relative;
+	margin: 0 auto;
+	background: white;
+	align-self: center;
+	max-width: 960px;
+}
+
+.modalInner {
+	display: flex;
+	padding: 1em;
+	max-height: 100%;
+}
+
+.close {
+	background: var(--gray);
+	color: #FFFFFF !important;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	border-radius: 12px;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+	background: var(--theme);
+}
+
+.modalThumb {
+	align-self: center;
+	margin: 1em;
+	color: var(--gray);
+}
+
+.modalThumb img {
+	width: 50vmin;
+}
+
+.modalContent {
+	padding: 1em;
+	overflow-y: auto;
+	flex-grow: 1;
+	text-align: justify;
+}
+
+
+#pkp-common-openJournalSystems #main>h2 {
+	display: none;
+}
+
+@media (max-width: 1200px) {
+	.journal-item {
+		width: calc(50% - 1em);
+	}
+}
+@media (max-width: 950px) {
+	.journal-item {
+		width: calc(50% - 1em);
+	}
+	.modalContent {
+		overflow: initial;
+	}
+	.modalInner {
+		flex-direction: column;
+		overflow: auto;
+	}
+	.modalThumb {
+		max-width: initial;
+	}
+}
 @media (max-width: 650px) {
 
 	#header h1 {
@@ -282,6 +395,7 @@ a.file {
 
 	.journals {
 		flex-direction: column;
+		margin: 0 -1em;
 	}
 
 	.footer-content {
@@ -311,71 +425,8 @@ a.file {
 	.footer {
 		background: linear-gradient(0deg, #058a 0%, var(--theme-dim) 50%);
 	}
-}
 
-
-.modalDialog {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background: rgba(0, 0, 0, 0.8);
-	z-index: 99999;
-	opacity: 0;
-	transition: opacity 0.3s ease-in;
-	pointer-events: none;
-	display: flex;
-}
-
-.modalDialog:target {
-	opacity: 1;
-	pointer-events: auto;
-}
-
-.modalDialog>div {
-	width: 80%;
-	max-height: 60%;
-	position: relative;
-	margin: 0 auto;
-	padding: 1em;
-	background: white;
-	display: flex;
-	align-self: center;
-	max-width: 960px;
-}
-
-.close {
-	background: var(--gray);
-	color: #FFFFFF;
-	line-height: 25px;
-	position: absolute;
-	right: -12px;
-	text-align: center;
-	top: -10px;
-	width: 24px;
-	text-decoration: none;
-	font-weight: bold;
-	border-radius: 12px;
-	box-shadow: 1px 1px 3px #000;
-}
-
-.close:hover {
-	background: var(--theme);
-}
-
-.modalThumb {
-	align-self: center;
-	margin: 1em;
-}
-
-.modalContent {
-	padding: 1em;
-	overflow-y: auto;
-	flex-grow: 1;
-}
-
-
-#pkp-common-openJournalSystems #main>h2 {
-	display: none;
+	.journal-item {
+		width: calc(100% - 1em);
+	}
 }

@@ -28,8 +28,8 @@
 {iterate from=journals item=journal}
 	<div class="journal-item">
 		<div class="journal-thumb">
-			<div class="homepageImage"><a href="#{$journal->getId()}">
-			{assign var="displayJournalThumbnail" value=$journal->getLocalizedSetting('journalThumbnail')}
+			<div class="homepageImage"><a href="#journal-{$journal->getId()}">
+			{assign var="displayJournalThumbnail" value=$journal->getLocalizedSetting('homepageImage')}
 			{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
 				{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
 				<img src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
@@ -37,35 +37,47 @@
 		</a></div>
 		</div>
 		<div class="journal-content">
-			{if $site->getSetting('showTitle')}
-				<h3>{$journal->getLocalizedTitle()|escape}</h3>
-			{/if}
-			<a href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a>
-				<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a>
-				<a href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a>
+				<a href="{url journal=$journal->getPath()}">
+				{if $site->getSetting('showTitle')}
+					<h3>{$journal->getLocalizedTitle()|escape}</h3>
+				{/if}
+				</a>
+				<div class="journal-action">
+					<a href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a>
+					<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a>
+					<a href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a>
+				</div>
 			</div>
 		</div>
 
 
-		<div id="{$journal->getId()}" class="modalDialog">
-			<div>
+		<div id="journal-{$journal->getId()}" class="modalDialog">
+			<div class="modalBox">
 				<a href="#close" title="Close" class="close">&times;</a>
-				<div class="modalThumb">
-					{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
-					{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
-						<img src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
-					{/if}
-				</div>
-				<div class="modalContent">
-					<h3>{$journal->getLocalizedTitle()|escape}</h3>
+				<div class="modalInner">
+					<div class="modalThumb">
+						{if $displayJournalThumbnail && is_array($displayJournalThumbnail)}
+						{assign var="altText" value=$journal->getLocalizedSetting('journalThumbnailAltText')}
+							<img src="{$journalFilesPath}{$journal->getId()}/{$displayJournalThumbnail.uploadName|escape:"url"}" {if $altText != ''}alt="{$altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
+						{else}
+							<span>Sampul kosong</span>
+						{/if}
+					</div>
+					<div class="modalContent">
+						<h3>{$journal->getLocalizedTitle()|escape}</h3>
 
-					{if $journal->getLocalizedDescription()}
-						<p>{$journal->getLocalizedDescription()|nl2br}</p>
-					{/if}
-
-					<a href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a>
-					<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a>
-					<a href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a>
+						{if $journal->getLocalizedDescription()}
+							<p>{$journal->getLocalizedDescription()|nl2br}</p>
+						{else}
+							<p><i>Deskripsi Kosong</i></p>
+						{/if}
+						<br>
+						<div class="modalAction">
+							<a href="{url journal=$journal->getPath()}" class="action">{translate key="site.journalView"}</a>
+							<a href="{url journal=$journal->getPath() page="issue" op="current"}" class="action">{translate key="site.journalCurrent"}</a>
+							<a href="{url journal=$journal->getPath() page="user" op="register"}" class="action">{translate key="site.journalRegister"}</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

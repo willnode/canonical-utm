@@ -25,7 +25,7 @@
 			Jl. Raya Telang, Kamal Bangkalan<br>
 			Kode Pos 69162</p>
 		<p>Telp. (031)8949333</p>
-		<p>Email : <a href="mailto:humas@trunojoyo.ac.id" target="_blank" rel="noopener">humas@trunojoyo.ac.id</a></p>
+		<p>Email : <a href="mailto:journal@trunojoyo.ac.id" target="_blank" rel="noopener">journal@trunojoyo.ac.id</a></p>
 		</div>
 	</div>
 	<div class="footer-copyright">
