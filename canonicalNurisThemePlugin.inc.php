@@ -1,40 +1,40 @@
 <?php
 
 /**
- * @file CanonicalUtmThemePlugin.inc.php
+ * @file CanonicalNurisThemePlugin.inc.php
  *
  * Copyright (c) 2013-2015 Simon Fraser University Library
  * Copyright (c) 2003-2015 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
- * @class CanonicalUtmThemePlugin
+ * @class CanonicalNurisThemePlugin
  * @ingroup plugins_themes_blueSteel
  *
- * @brief "CanonicalUtm" theme plugin
+ * @brief "CanonicalNuris" theme plugin
  */
 
 import('classes.plugins.ThemePlugin');
 
-class CanonicalUtmThemePlugin extends ThemePlugin {
+class CanonicalNurisThemePlugin extends ThemePlugin {
 	/**
 	 * Get the name of this plugin. The name must be unique within
 	 * its category.
 	 * @return String name of plugin
 	 */
 	function getName() {
-		return 'CanonicalUtmThemePlugin';
+		return 'CanonicalNurisThemePlugin';
 	}
 
 	function getDisplayName() {
-		return 'CanonicalUtm Theme';
+		return 'CanonicalNuris Theme';
 	}
 
 	function getDescription() {
-		return 'Stylesheet for UTM Journal Canonical Page';
+		return 'Stylesheet for Nuris Journal Canonical Page';
 	}
 
 	function getStylesheetFilename() {
-		return 'canonicalUtm.css';
+		return 'canonicalNuris.css';
 	}
 
 	function getLocaleFilename($locale) {
@@ -43,7 +43,7 @@ class CanonicalUtmThemePlugin extends ThemePlugin {
 
 
 	function activate(&$templateMgr) {
-		$theme_template_id = "canonicalUtm";
+		$theme_template_id = "canonicalNuris";
 		$theme_template_dir = Core::getBaseDir() . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'themes' . DIRECTORY_SEPARATOR . $theme_template_id . DIRECTORY_SEPARATOR . 'templates';
 
 		$templateMgr->template_dir = array($theme_template_dir, $templateMgr->app_template_dir, $templateMgr->core_template_dir);

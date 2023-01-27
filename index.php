@@ -16,8 +16,8 @@
  *
  */
 
-require_once('canonicalUtmThemePlugin.inc.php');
+require_once('canonicalNurisThemePlugin.inc.php');
 
-return new CanonicalUtmThemePlugin();
+return new CanonicalNurisThemePlugin();
 
 ?>

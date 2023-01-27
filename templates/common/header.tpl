@@ -110,10 +110,10 @@
 <body id="pkp-{$pageTitle|replace:'.':'-'}">
 <div id="container">
 
-<div id="header" style="--bg: url({$baseUrl}/plugins/themes/canonicalUtm/assets/header.jpg)">
+<div id="header" style="--bg: url({$baseUrl}/plugins/themes/canonicalNuris/assets/header.jpg)">
 <div id="headerTitle">
 <h1>
-<img class="headerLogo" src="{$baseUrl}/plugins/themes/canonicalUtm/assets/logo.png">
+<img class="headerLogo" src="{$baseUrl}/plugins/themes/canonicalNuris/assets/logo.png">
 {if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
 	<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" width="{$displayPageHeaderLogo.width|escape}" height="{$displayPageHeaderLogo.height|escape}" {if $displayPageHeaderLogoAltText != ''}alt="{$displayPageHeaderLogoAltText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if} />
 {/if}
